@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, Button, Text, FlatList } from 'react-native'
+import { View, Button, Text, FlatList, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import styles from './styles'
 
 import * as api from '../../../api/'
+import { PeopleCell } from '../../widgets/'
 
 export default class People extends Component {
 
@@ -12,6 +13,7 @@ export default class People extends Component {
     this.state = {
       numError: 0,
       peopleList: [],
+      cellSelected: null
     }
   }
   
@@ -29,29 +31,26 @@ export default class People extends Component {
     })
   }
 
-  _renderItem ({item, index}) {
-    console.log(item.name)
+  _onCellTapped(item) {
+    console.log ('Press in cell', item)
+    this.setState({ cellSelected: item })
+    //Actions.person(person= this.state.cellSelected)
+  }
+
+  _renderItem ({ item }) {
     return (
-      <View style={styles.mainCell}>
-        <Text>{item.name}</Text>
-      </View>
+      <PeopleCell item={item} onPress= { () => this._onCellTapped(item) } />
     )
   }
 
   render() {
-    console.log (this.state.peopleList)
     return (
       <View style ={styles.mainView}>
-        <Button  
-          title={'Pulsa'}
-          color={'white'}
-          style={{ alignItems:'center' }}
-          onPress={ () => Actions.person()}
-        />
         <FlatList
           data = {this.state.peopleList}
           renderItem = { value => this._renderItem(value)}
           keyExtractor = { (v, i) => 'ip ' + i}
+          extraData = {this.state.selected}
         />
       </View>
     )
