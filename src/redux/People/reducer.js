@@ -16,12 +16,12 @@ export default function reducer(state = initialState, action = {}) {
     case types.PEOPLE_UPDATE_LIST:
       return {
         ...state,
-        isFetching: action.value
+        list: action.value
       }
     case types.PEOPLE_SET_ITEMSELECTED:
       return {
         ...state,
-        isFetching: action.value
+        itemSelected: action.value
       }
     default:
       return {

@@ -1,34 +1,14 @@
 import React, { Component } from 'react'
-import { View, Button, Text, FlatList, TouchableOpacity } from 'react-native'
-import { Actions } from 'react-native-router-flux'
+import { View, FlatList } from 'react-native'
 import styles from './styles'
-
-import * as api from '../../../api/'
 import { PeopleCell } from '../../widgets/'
+import  { connect } from 'react-redux'
+import * as PeopleActions from '../../../redux/People/actions'
 
-export default class People extends Component {
+class People extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      numError: 0,
-      peopleList: [],
-      cellSelected: null
-    }
-  }
-  
   componentWillMount() {
-    api.fetchPeople().then (res => {
-      this.setState({ peopleList: res.data })
-    }).catch (err => {
-      if (this.state.numError < 3) {
-        this.setState({ numError: this.state.numError + 1 })
-        console.log ('Error number ', this.state.numError)
-        this.componentWillMount()
-      } else {
-        console.log('fetchPeople error ', err)
-      }
-    })
+    this.props.fetchPeopleList()
   }
 
   _onCellTapped(item) {
@@ -44,15 +24,33 @@ export default class People extends Component {
   }
 
   render() {
+    console.log(this.props.isFetching)
     return (
       <View style ={styles.mainView}>
         <FlatList
-          data = {this.state.peopleList}
+          data = {this.props.list}
           renderItem = { value => this._renderItem(value)}
           keyExtractor = { (v, i) => 'ip ' + i}
-          extraData = {this.state.selected}
+          extraData = {this.state}
         />
       </View>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.people.isFetching,
+    list: state.people.list
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchPeopleList: () => {
+      dispatch(PeopleActions.fetchPeopleList())
+    }
+  }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(People)
