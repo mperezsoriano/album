@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Scene, Stack, Router } from 'react-native-router-flux'
 
-import { People, Person } from '../components/sections/'
+import { Initial, People, Person } from '../components/sections/'
 import * as api from '../api/'
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
@@ -27,8 +27,9 @@ export default class App extends Component {
       <Provider store={store}>
         <Router navigationBarStyle={{ backgroundColor: '#98A99A'}} headerTintColor={'black'}>
           <Stack key="root">
-            <Scene key="people" component={People} title="LIST OF CANDIDATES" initial={true}/>
-            <Scene key="person" component={Person} title="DETAIL" titleStyle={'white'}/>
+            <Scene key="initial" component={Initial} title="CANDIDATES" initial={true} />
+            <Scene key="people" component={People} title="LIST OF CANDIDATES"/>
+            <Scene key="person" component={Person} title="DETAIL" titleStyle={'white'} />
           </Stack>
         </Router>
       </Provider>

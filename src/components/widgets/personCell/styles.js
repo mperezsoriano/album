@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flex: 1
   },
   personalView: {
-    backgroundColor: '#D7A32D',//'#98A99A',
+    backgroundColor: '#98A99A',
     flex: 4,
     flexDirection: 'row',
     borderRadius: 10,
