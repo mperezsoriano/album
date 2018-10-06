@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flex: 1
   },
   personalView: {
-    backgroundColor: '#98A99A',
+    backgroundColor: '#D7A32D',//'#98A99A',
     flex: 4,
     flexDirection: 'row',
     borderRadius: 10,
@@ -48,12 +48,24 @@ export default StyleSheet.create({
     borderRadius: 10
   },
   creditCardView: {
-    flex: 4
+    flex: 4,
   },
   credirCardImage: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
     height: '45%'
+  },
+  h2TextCard: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: '600',
+    paddingTop: 100,
+    paddingBottom: 25
+  },
+  h3TextCard: {
+    color: 'white',
+    fontSize: 16,
+    paddingTop: 3
   }
 })

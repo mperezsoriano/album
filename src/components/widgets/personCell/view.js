@@ -7,7 +7,6 @@ export default class PersonCell extends Component {
   render() {
     const { name, surname, email, birthday, region, phone, photo } = this.props.person
     const { number, expiration, pin, secutity } = this.props.person.credit_card
-    console.log (photo)
     return (
       <View style={styles.mainView}>
         <View style={styles.titleView}>
@@ -31,9 +30,9 @@ export default class PersonCell extends Component {
           <Text style={styles.h1Text}>Credit Card Information</Text>
         </View>
         <View style={styles.creditCardView}>
-          <Text>{name} {surname}</Text>
-          <Text>{number}</Text>
-          <Text>{expiration}</Text>
+          <Text style={styles.h2TextCard}>{number}</Text>
+          <Text style={styles.h3TextCard}>VALID: {expiration}</Text>
+          <Text style={styles.h3TextCard}>{name} {surname}</Text>
         </View>
       </View>
     )
