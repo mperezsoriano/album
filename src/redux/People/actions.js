@@ -1,5 +1,4 @@
 import * as types from './types'
-import * as api from '../../api'
 
 function setFetching(value) {
   return {
@@ -15,7 +14,7 @@ function setList(value) {
   }
 }
 
-function setItem(value) {
+export function setItem(value) {
   return {
     type: types.PEOPLE_SET_ITEMSELECTED,
     value: value
@@ -23,7 +22,7 @@ function setItem(value) {
 }
 
 export function fetchPeopleList() {
-  return (dispatch, getState) => {
+  return (dispatch, getState, api) => {
     dispatch(setFetching(true))
     api
       .fetchPeople()

@@ -7,4 +7,9 @@ export default StyleSheet.create ({
     paddingHorizontal: 10,
     paddingTop: 2
   },
+  mainActivityIndicator: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 })

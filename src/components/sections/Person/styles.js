@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  view: {
+  mainView: {
     flex: 1, 
-    backgroundColor: 'orange'
+    backgroundColor: '#E3E3E3'
   }
 })

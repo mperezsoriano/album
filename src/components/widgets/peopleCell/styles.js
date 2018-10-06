@@ -11,7 +11,6 @@ export default StyleSheet.create({
     borderRadius: 10,
     flex: 1,
     flexDirection: 'row'
-
   },
   textCell: {
     textAlign: 'center',

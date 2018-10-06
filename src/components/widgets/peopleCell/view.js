@@ -11,7 +11,7 @@ export default class PeopleCell extends Component {
   }
 
   render () {
-    const { name, surname, age, photo } = this.props.item
+    const { name, surname, photo } = this.props.item
     return (
       <TouchableOpacity style={styles.mainCell} onPress={this.props.onPress}>
         <Image

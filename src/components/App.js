@@ -9,10 +9,11 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import * as reducers from '../redux'
+
 const reducer = combineReducers(reducers)
 const store = createStore(
   reducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk.withExtraArgument(api))
 )
 
 export default class App extends Component {
@@ -24,10 +25,10 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router navigationBarStyle={{ backgroundColor: '#98A99A' }}>
+        <Router navigationBarStyle={{ backgroundColor: '#98A99A'}} headerTintColor={'black'}>
           <Stack key="root">
             <Scene key="people" component={People} title="LIST OF CANDIDATES" initial={true}/>
-            <Scene key="person" component={Person} title="Detail of person"/>
+            <Scene key="person" component={Person} title="DETAIL" titleStyle={'white'}/>
           </Stack>
         </Router>
       </Provider>
