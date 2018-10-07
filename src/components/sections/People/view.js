@@ -9,7 +9,8 @@ import { Actions } from 'react-native-router-flux'
 class People extends Component {
 
   componentWillMount() {
-    this.props.fetchPeopleList()
+    console.log (this.props.numberOfCandidates)
+    this.props.fetchPeopleList(this.props.numberOfCandidates)
   }
 
   _renderItem ({ item }) {
@@ -52,13 +53,14 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.people.isFetching,
     list: state.people.list,
+    numberOfCandidates: state.initial.numberCandidates
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    fetchPeopleList: () => {
-      dispatch(PeopleActions.fetchPeopleList())
+    fetchPeopleList: (numberOfCandidates) => {
+      dispatch(PeopleActions.fetchPeopleList(numberOfCandidates))
     },
     setItemCell: (item) => {
       dispatch(PeopleActions.setItem(item))

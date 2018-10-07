@@ -21,11 +21,11 @@ export function setItem(value) {
   }
 }
 
-export function fetchPeopleList() {
+export function fetchPeopleList(numberofCandidates) {
   return (dispatch, getState, api) => {
     dispatch(setFetching(true))
     api
-      .fetchPeople()
+      .fetchPeople(numberofCandidates)
       .then (res => {
         dispatch(setFetching(false))
         dispatch(setList(res.data))
