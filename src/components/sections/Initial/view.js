@@ -11,7 +11,7 @@ class Initial extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      numberTextInput: '100'
+      numberTextInput: '25'
     }
   }
 
@@ -28,7 +28,7 @@ class Initial extends Component {
           style={styles.textInput}
           value={this.state.numberTextInput}
           onChangeText={ numberTextInput => this.setState({ numberTextInput }) } 
-          placeholder= '100'
+          placeholder= '25'
           maxLength = {3}
           keyboardType = 'numeric'
         />
